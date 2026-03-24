@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verandah Properties — Management Agreement Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #1A6B72;
+    --teal-light: #e6f4f5;
+    --teal-mid: #2a8a93;
+    --gold: #B8860B;
+    --gold-light: #fdf6e3;
+    --charcoal: #1c1c1c;
+    --midgray: #555;
+    --lightgray: #f7f7f5;
+    --border: #ddd;
+    --white: #ffffff;
+    --green: #1E6B3C;
+    --green-light: #eaf5ee;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--lightgray);
+    color: var(--charcoal);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--teal);
+    color: white;
+    padding: 48px 40px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 30%;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+  .header-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 1; }
+  .logo-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 16px;
+  }
+  .header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 500;
+    line-height: 1.15;
+    color: white;
+    margin-bottom: 12px;
+  }
+  .header h1 em { font-style: italic; color: rgba(255,255,255,0.85); }
+  .header-sub {
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.75);
+    max-width: 540px;
+    line-height: 1.6;
+  }
+  .header-meta {
+    margin-top: 24px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .meta-pill {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 0.3px;
+  }
+
+  /* ── FEE SNAPSHOT ── */
+  .fee-bar {
+    background: var(--gold-light);
+    border-bottom: 2px solid var(--gold);
+    padding: 20px 40px;
+  }
+  .fee-bar-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .fee-bar-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2px;
+  }
+  .fee-bar-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--charcoal);
+  }
+  .fee-bar-note { font-size: 12px; color: var(--midgray); }
+  .fee-divider { width: 1px; height: 44px; background: var(--gold); opacity: 0.3; }
+
+  /* ── INTRO NOTE ── */
+  .intro-note {
+    max-width: 860px;
+    margin: 32px auto 0;
+    padding: 0 40px;
+    background: transparent;
+  }
+  .intro-card {
+    background: white;
+    border-left: 4px solid var(--teal);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--midgray);
+  }
+  .intro-card strong { color: var(--teal); }
+
+  /* ── MAIN LAYOUT ── */
+  .main { max-width: 860px; margin: 0 auto; padding: 32px 40px 80px; }
+
+  /* ── SECTION GROUPS ── */
+  .section-group { margin-bottom: 40px; }
+  .section-group-title {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--teal-light);
+  }
+
+  /* ── FAQ ITEMS ── */
+  .faq-item {
+    background: white;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    margin-bottom: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+  }
+  .faq-item:hover { box-shadow: 0 2px 12px rgba(26,107,114,0.08); }
+  .faq-item.open { border-color: var(--teal); box-shadow: 0 2px 16px rgba(26,107,114,0.12); }
+
+  .faq-trigger {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 18px 20px 18px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    cursor: pointer;
+    text-align: left;
+  }
+  .faq-clause {
+    background: var(--teal);
+    color: white;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border-radius: 4px;
+    padding: 3px 8px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .faq-clause.gold { background: var(--gold); }
+  .faq-clause.green { background: var(--green); }
+  .faq-clause.gray { background: #666; }
+
+  .faq-question {
+    flex: 1;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--charcoal);
+    line-height: 1.4;
+  }
+  .faq-icon {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 1.5px solid var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+    transition: all 0.25s ease;
+    color: var(--teal);
+    font-size: 16px;
+    line-height: 1;
+  }
+  .faq-item.open .faq-icon {
+    background: var(--teal);
+    color: white;
+    transform: rotate(45deg);
+  }
+
+  .faq-body {
+    display: none;
+    padding: 0 20px 20px 56px;
+    animation: slideDown 0.2s ease;
+  }
+  .faq-item.open .faq-body { display: block; }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .faq-answer {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #3a3a3a;
+  }
+  .faq-answer p { margin-bottom: 10px; }
+  .faq-answer p:last-child { margin-bottom: 0; }
+  .faq-answer strong { color: var(--teal); font-weight: 500; }
+  .faq-answer .highlight {
+    background: var(--teal-light);
+    border-left: 3px solid var(--teal);
+    padding: 10px 14px;
+    border-radius: 0 6px 6px 0;
+    margin: 10px 0;
+    font-size: 13.5px;
+  }
+  .faq-answer .highlight.gold-hl {
+    background: var(--gold-light);
+    border-left-color: var(--gold);
+  }
+  .faq-answer .highlight.green-hl {
+    background: var(--green-light);
+    border-left-color: var(--green);
+  }
+  .faq-answer ul {
+    padding-left: 18px;
+    margin: 8px 0;
+  }
+  .faq-answer ul li { margin-bottom: 5px; font-size: 14px; }
+
+  /* ── INCLUDED FREE BANNER ── */
+  .free-banner {
+    background: linear-gradient(135deg, var(--green) 0%, #2a8a50 100%);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-bottom: 40px;
+    color: white;
+  }
+  .free-banner-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: white;
+  }
+  .free-banner-sub { font-size: 13px; opacity: 0.85; margin-bottom: 16px; }
+  .free-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+  }
+  .free-item {
+    background: rgba(255,255,255,0.12);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 13px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .free-item::before { content: '✓'; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--charcoal);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 28px 40px;
+    font-size: 12.5px;
+    line-height: 1.7;
+  }
+  .footer a { color: rgba(255,255,255,0.8); text-decoration: none; }
+  .footer strong { color: white; }
+
+  @media (max-width: 600px) {
+    .header, .main, .fee-bar, .intro-note { padding-left: 20px; padding-right: 20px; }
+    .header h1 { font-size: 30px; }
+    .fee-bar-inner { gap: 20px; }
+    .fee-divider { display: none; }
+    .faq-body { padding-left: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <div class="logo-mark">Verandah Properties, LLC</div>
+    <h1>Your Management Agreement,<br><em>Plain and Simple.</em></h1>
+    <p class="header-sub">We know a property management agreement can feel dense. This guide walks through every clause that matters most — in plain language, with honest answers. Click any question to expand.</p>
+    <div class="header-meta">
+      <span class="meta-pill">25 Sections Covered</span>
+      <span class="meta-pill">Tied to Actual Clauses</span>
+      <span class="meta-pill">No Surprises</span>
+    </div>
+  </div>
+</div>
+
+<!-- FEE SNAPSHOT -->
+<div class="fee-bar">
+  <div class="fee-bar-inner">
+    <div>
+      <div class="fee-bar-label">Monthly Management Fee</div>
+      <div class="fee-bar-value">8% of rent collected</div>
+      <div class="fee-bar-note">e.g. $1,895/mo rent = $151.60/mo fee</div>
+    </div>
+    <div class="fee-divider"></div>
+    <div>
+      <div class="fee-bar-label">One-Time Leasing Fee</div>
+      <div class="fee-bar-value">50% of first month's rent</div>
+      <div class="fee-bar-note">e.g. $1,895/mo = $947.50 — paid once at lease execution</div>
+    </div>
+    <div class="fee-divider"></div>
+    <div>
+      <div class="fee-bar-label">Lease Renewal Fee</div>
+      <div class="fee-bar-value">$200 flat</div>
+      <div class="fee-bar-note">When your current tenant renews — no new leasing fee</div>
+    </div>
+    <div class="fee-divider"></div>
+    <div>
+      <div class="fee-bar-label">Marketing Fee (Year 1)</div>
+      <div class="fee-bar-value">Waived</div>
+      <div class="fee-bar-note">$100 applies for future placements only</div>
+    </div>
+  </div>
+</div>
+
+<!-- INTRO NOTE -->
+<div class="intro-note">
+  <div class="intro-card">
+    <strong>How to use this guide:</strong> Each question below is tied to a specific section of your agreement. We've answered the questions we hear most — including the ones people are sometimes hesitant to ask. If something isn't covered here, just reach out directly. We'd rather answer it than have it linger.
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- INCLUDED FREE -->
+  <div class="free-banner" style="margin-top: 32px;">
+    <div class="free-banner-title">What's Included at No Additional Cost to You</div>
+    <div class="free-banner-sub">Every Verandah-managed property receives the following from day one — no add-ons, no tiers.</div>
+    <div class="free-items">
+      <div class="free-item">Landlord Shield Coverage (Year 1 FREE) — $35K damage, 25 weeks lost rent, eviction, $1M liability</div>
+      <div class="free-item">Animal Protection Guarantee — up to $1,500 in pet damage coverage beyond the deposit</div>
+      <div class="free-item">Experian tenant payment reporting — monthly, reinforces on-time rent behavior</div>
+      <div class="free-item">Professional marketing photography & MLS/Zillow/Realtor.com listing</div>
+      <div class="free-item">Rently.com smart lockbox with verified prospect showings & instant alerts</div>
+      <div class="free-item">Secure online Owner Portal — statements, documents, maintenance history</div>
+      <div class="free-item">Electronic 1099 tax form delivery through the Owner Portal</div>
+      <div class="free-item">Marketing fee waived for the first year of management</div>
+    </div>
+  </div>
+
+  <!-- GROUP 1: FEES & COMPENSATION -->
+  <div class="section-group">
+    <div class="section-group-title">Fees & Compensation — Section 10</div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" onclick="toggle(this)">
+        <span class="faq-clause">§10(b)</span>
+        <span class="faq-question">What exactly are your fees — and when do I pay them?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-answer">
+          <p>There are two primary fees and they work very differently:</p>
+          <div class="highlight gold-hl"><strong>Leasing Fee (one-time):</strong> 50% of the first month's rent, paid once when a new tenant's lease is executed. At $1,895/month, that's $947.50 — charged once per new tenancy, not annually.</div>
+          <div class="highlight"><strong>Monthly Management Fee:</strong> 8% of rent collected each month. At $1,895, that's $151.60/month. This is only charged when rent is collected — we don't charge management fees on vacant months.</div>
+          <div class="highlight gold-hl"><strong>Lease Renewal Fee:</strong> $200 flat when your current tenant renews. No new leasing fee — just $200 to cover the administrative renewal process.</div>
+          <p>The marketing fee is <strong>waived for your first year</strong>. For any future new tenant placements, a $100 marketing fee applies.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" onclick="toggle(this)">
+        <span class="faq-clause">§10(b)</span>
+        <span class="faq-question">Why are there two separate charges — the leasing fee AND the management fee?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-answer">
+          <p>They cover two entirely different things. The <strong>leasing fee</strong> is a one-time cost for finding, screening, and placing a qualified tenant — advertising, showings, application processing, background and credit checks, lease drafting, and move-in coordination. It's the work of getting someone into your home.</p>
+          <p>The <strong>monthly management fee</strong> is what covers everything that happens after that — rent collection, maintenance coordination, tenant communication, compliance, monthly statements, and 20+ years of experience navigating whatever comes up. You're not paying 8% for billing — you're paying 8% for full-service professional oversight of your investment every single month.</p>
+          <div class="highlight green-hl">Think of it this way: the leasing fee is the setup; the management fee is the ongoing service. Both are necessary, both are reasonable, and together they are what make professional management work.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" onclick="toggle(this)">
+        <span class="faq-clause">§10(e)</span>
+        <span class="faq-question">What happens if a tenant doesn't pay rent — or needs to be evicted?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-answer">
+          <p>We handle the entire process on your behalf. If a tenant falls behind, we issue the legally required notices immediately and proceed through the Florida eviction process with your authorization.</p>
+          <p><strong>Costs:</strong> Legal eviction costs are the owner's responsibility. However, if you are enrolled in the <strong>Landlord Shield Coverage</strong> (included free your first year), eviction costs are covered under that program — including lost rent during the process, up to 25 weeks.</p>
+          <div class="highlight gold-hl">If the tenant was placed by us and requires eviction, the eviction service fee is $300 in addition to any direct legal costs. Court or HOA appearances by Verandah staff are $300 per appearance.</div>
+          <p>Any recovered funds — attorney fees, unpaid rent, damages — are disbursed to you. We pursue every available legal remedy on your behalf.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" onclick="toggle(this)">
+        <span class="faq-clause">§10(g)</span>
+        <span class="faq-question">If my tenant eventually wants to buy the property, is there a commission involved?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-answer">
+          <p>Yes — if a tenant we placed purchases your property, a <strong>1.5% commission</strong> is due at closing. This applies whether the tenant is currently in place or was in residence within the past 12 months.</p>
+          <p>Verandah does not negotiate the sale or represent either party in the transaction — we simply receive a referral-style fee for having introduced the buyer to the property. The 1.5% is due regardless of whether another agent is involved in the sale itself.</p>
+          <div class="highlight">This is a relatively rare scenario, but we want you to know about it upfront so there are no surprises if it ever arises.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" onclick="toggle(this)">
+        <span class="faq-clause">§10(h)</span>
+        <span class="faq-question">Is there a cancellation fee if I decide to leave?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-answer">
+          <div class="highlight green-hl"><strong>No cancellation fee.</strong> You may terminate this agreement with 30 days' written notice at any time — no penalties.</div>
+          <p>The only exception: if you cancel within the <strong>first 90 days</strong>, we ask that you reimburse us for any direct expenses already incurred — specifically professional marketing photography and any third-party property inspection. These are billed at actual cost with invoices provided.</p>
+          <p>After the first year, if you transition to self-management or a different company, a <strong>$500 transition fee</strong> applies to cover the administrative handoff — tenant communications, accounting reconciliation, records transfer, and return of all keys and access devices.</p>
+          <p><strong>One additional note</strong> on the SureVestor coverage: if you cancel within the first 18 months, you agree to reimburse Verandah for the first-year SureVestor premium we covered on your behalf.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GROUP 2: TERM & TERMINATION -->
+  <div class="section-group">
+    <div class="section-group-title">Term, Termination & Your Control — Section 2</div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" onclick="toggle(this)">
+        <span class="faq-clause">§2</span>
+        <span class="faq-question">How do I cancel if I need to — and what does the 30-day notice really mean?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-answer">
+          <p>Written notice to us — email qualifies — starts the 30-day clock. The termination is effective only when we receive it in writing, not from the date of a phone conversation.</p>
+          <p>The 30 days allows us to properly hand off tenant communications, finalize accounting, return access devices, and ensure nothing falls through the cracks for your tenant. It's a professional runway, not a penalty.</p>
+          <div class="highlight gold-hl"><strong>Important:</strong> If the property is currently leased when you terminate, the lease itself remains in force until its natural end date — terminating the management agreement does not terminate the tenant's lease. Florida law protects tenants' right to quiet enjoyment through the lease term.</div>
+          <p>Any outstanding expenses we've incurred on your behalf will be settled from your account balance before the final disbursement.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" onclick="toggle(this)">
+        <span class="faq-clause">§2</span>
+        <span class="faq-question">Can Verandah terminate the agreement — and under what circumstances?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-answer">
+          <p>Yes — we reserve the right to terminate with written notice at any time. We take this seriously and only exercise it in genuine circumstances.</p>
+          <div class="highlight gold-hl"><strong>Immediate termination</strong> may occur if, in our professional judgment, an owner's actions or inactions are illegal, improper, or jeopardize tenant or public safety. Examples: cutting utilities on an occupied tenant, directing us to violate fair housing law, or misrepresenting the property's condition.</div>
+          <p>In 20+ years of management, we have exercised this right very rarely. Our goal is a long, productive relationship — not to exit it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GROUP 3: RENTAL PRICING -->
+  <div class="section-group">
+    <div class="section-group-title">Rental Pricing & Your Input — Section 3</div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" onclick="toggle(this)">
+        <span class="faq-clause">§3</span>
+        <span class="faq-question">Do I have any say in the rental price, or does Verandah set it unilaterally?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-answer">
+          <p>You absolutely have input — and we encourage it. The agreement grants us authority to set and adjust pricing based on market conditions, but in practice we present every pricing recommendation to you with supporting CMA data and discuss it before listing.</p>
+          <div class="highlight"><strong>What this clause is really designed to do</strong> is allow us to act quickly when the market signals a needed adjustment — without requiring a signature every time we respond to market conditions. Requiring owner approval on every small adjustment would create delays that cost you vacancy days.</div>
+          <p>Here's our real practice: We present you with a recommended list price before going live. If the property hasn't leased within approximately 14 days and showing feedback suggests pricing resistance, we'll call you — not email — with a specific recommendation and the data behind it. You're never in the dark.</p>
+          <div class="highlight gold-hl">We work on a percentage of rent collected. Our incentive is always to maximize your rent — not minimize it. We have no reason to price your property low.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GROUP 4: REPAIRS & MAINTENANCE -->
+  <div class="section-group">
+    <div class="section-group-title">Repairs, Maintenance & Vendors — Section 5(d) & 5(e)</div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" onclick="toggle(this)">
+        <span class="faq-clause">§5(d)</span>
+        <span class="faq-question">Do you need my approval before making repairs? What if I disagree with a repair decision?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-answer">
+          <p>It depends on the type of repair:</p>
+          <div class="highlight"><strong>Routine repairs and maintenance:</strong> We handle these promptly and notify you — but notification is informational, not a request for approval. Waiting for sign-off on a leaky faucet or broken garbage disposal creates delays, vendor trip fees, and frustrated tenants. These are handled and you're informed.</div>
+          <div class="highlight gold-hl"><strong>Large-scale repairs and capital improvements</strong> (roof, full flooring, appliance replacement, major exterior work, etc.) always require your review. We'll get multiple bids, present options, and proceed only with your authorization.</div>
+          <div class="highlight" style="background:var(--teal-light);border-left-color:var(--teal);"><strong>Emergency repairs</strong> are handled immediately — HVAC failure, flooding, plumbing emergencies, safety hazards. Florida law and your lease require us to act. We notify you as soon as possible, but we cannot wait for approval when tenant health or property safety is at risk.</div>
+          <p>All repair costs come from your owner reserve account or are deducted from the next disbursement. We never advance personal funds for repairs.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" onclick="toggle(this)">
+        <span class="faq-clause">§5(e)</span>
+        <span class="faq-question">Can I use my own vendors or contractors?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-answer">
+          <p>Yes — with one important requirement. Your preferred vendor must first be onboarded as a Verandah-approved vendor. This protects everyone: it ensures they carry proper insurance, meet our response-time standards, and are authorized to work on managed properties.</p>
+          <div class="highlight"><strong>Our practice:</strong> We will attempt to use your preferred vendor first. However, if they are unresponsive or cannot meet our response-time expectations for the situation, we will dispatch from our vetted vendor network to avoid delays, additional damage, or tenant disruption.</div>
+          <p>The agreement notes that Verandah is not liable for incomplete or defective work by third-party vendors — including your preferred vendors. Our role is coordination and oversight.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" onclick="toggle(this)">
+        <span class="faq-clause">§5(k)</span>
+        <span class="faq-question">What happens to my property during a hurricane or major storm?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-answer">
+          <p>The agreement states that Verandah is not responsible for taking precautionary measures or securing the property in the event of hurricanes or acts of God. Here's the plain-language explanation of why — and what actually happens:</p>
+          <div class="highlight gold-hl">Florida law places storm preparation responsibility on the property owner. We cannot legally enter an occupied property and remove or install hurricane shutters, move furniture, or take structural precautions without both owner authorization and coordination with the tenant. It's a liability boundary, not indifference.</div>
+          <p><strong>What we do in practice:</strong> Before a named storm, we communicate with tenants about their responsibilities under the lease (securing their personal property, reporting damage immediately). We monitor properties post-storm and dispatch vendors for emergency repairs as quickly as possible. We keep owners updated throughout.</p>
+          <p>We strongly recommend ensuring your homeowner's insurance is current and that your policy covers rental activity — this is the primary protection mechanism for storm-related damage.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GROUP 5: FINANCIALS -->
+  <div class="section-group">
+    <div class="section-group-title">Your Money — When & How You Get Paid — Sections 5(n), 5(o), 5(p)</div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" onclick="toggle(this)">
+        <span class="faq-clause">§5(p)</span>
+        <span class="faq-question">When do I get paid, and what gets deducted before I receive my funds?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-answer">
+          <p>Funds are electronically deposited to you <strong>after tenant payments have cleared</strong> our bank. No funds are disbursed until clearance is confirmed — this protects you from bounced payments.</p>
+          <p><strong>Disbursement order:</strong></p>
+          <ul>
+            <li>Our management fees and any reimbursements due</li>
+            <li>Operating expenses and vendor invoices for your property</li>
+            <li>Reserve replenishment (if the $500 reserve dipped below minimum)</li>
+            <li>Remaining balance — that's your disbursement</li>
+          </ul>
+          <div class="highlight">You'll receive a detailed monthly statement reflecting every line item — rent collected, fees deducted, repairs billed, and your net proceeds. Nothing is hidden.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" onclick="toggle(this)">
+        <span class="faq-clause">§5(n)</span>
+        <span class="faq-question">What is the $500 owner reserve — and why is it required?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-answer">
+          <p>The $500 owner reserve is a small operating buffer held in our trust account. It exists so that when a routine repair comes up — a broken garbage disposal, a clogged drain, a failed smoke detector — we can address it immediately without waiting for a wire transfer from you.</p>
+          <div class="highlight"><strong>Timing matters in property management.</strong> A tenant who has to wait three days for a minor repair because the owner's funds weren't available is a dissatisfied tenant. The reserve eliminates that friction entirely.</div>
+          <p>If the reserve is used, we replenish it from the next rent disbursement before sending you the balance. The reserve is <strong>required before marketing begins</strong> — no property goes live until it's funded and cleared.</p>
+          <p>Note: If you default on your mortgage, the required reserve increases to $5,000 to cover potential owner-obligated repairs as required by law.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GROUP 6: TENANT MATTERS -->
+  <div class="section-group">
+    <div class="section-group-title">Tenants, Occupancy & Compliance — Sections 8, 11, 22</div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" onclick="toggle(this)">
+        <span class="faq-clause">§8(a)</span>
+        <span class="faq-question">Why can't I contact my own tenant directly?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-answer">
+          <p>This is one of the most important boundaries in professional property management — and it exists entirely to protect you.</p>
+          <div class="highlight gold-hl"><strong>The legal risk:</strong> If you contact your tenant directly and a dispute later arises — about repairs, rent, anything — you may be required to testify in court. Every direct communication becomes potential evidence. The moment you're in the chain of communication, you're also in the chain of liability.</div>
+          <div class="highlight"><strong>The management risk:</strong> Direct owner contact with tenants undermines our authority to enforce the lease. If a tenant knows they can bypass us and call you directly, lease enforcement becomes very difficult. It creates confusion about who is responsible for what — and that confusion is always exploited.</div>
+          <p>Our job is to be the professional buffer. If a tenant has a concern, we handle it. If we need your input, we bring it to you through the appropriate channel. Direct tenant contact by an owner is grounds for immediate termination of this agreement.</p>
+          <div class="highlight green-hl">Think of it as the same reason you don't negotiate directly with the other party in a legal matter when you have an attorney — it's not distrust, it's good process.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" onclick="toggle(this)">
+        <span class="faq-clause">§11</span>
+        <span class="faq-question">How do you monitor the property? What if I'm worried about unauthorized occupants or pets?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-answer">
+          <p>The agreement notes that Verandah does not provide security services or routine property inspections beyond standard lease enforcement. Here's what that means in practice — because "standard lease enforcement" actually covers quite a bit:</p>
+          <ul>
+            <li><strong>Move-in inspection:</strong> Time-stamped, room-by-room photo documentation before the tenant takes possession</li>
+            <li><strong>Vendor observations:</strong> Every vendor who enters the property is a set of eyes — they report anything unusual</li>
+            <li><strong>Renewal walk-throughs:</strong> At lease renewal, we conduct a property condition review</li>
+            <li><strong>Maintenance patterns:</strong> Unusual repair requests can signal occupancy issues or unauthorized pets</li>
+            <li><strong>Annual inspections:</strong> Available as an add-on service if you want scheduled interior inspections</li>
+          </ul>
+          <div class="highlight gold-hl"><strong>Unauthorized pets:</strong> Our pet screening process at move-in documents approved animals. Any new animals are a lease violation and addressed through our formal notice process. Our pet policy (Section 22) is designed so that owners who accept pets responsibly get significantly better tenant pools — while unapproved animals remain a clear lease violation.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" onclick="toggle(this)">
+        <span class="faq-clause">§22</span>
+        <span class="faq-question">I see the agreement says "pets will be considered" — what does that mean for my property?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-answer">
+          <p>By signing this agreement, you agree that our marketing ad will note that pets are considered. This is a deliberate and important policy — here's why it works in your favor:</p>
+          <div class="highlight gold-hl"><strong>Refusing all pets eliminates more than 50% of qualified renters immediately.</strong> The well-qualified tenants we work to place are responsible people who will not allow an animal to damage a home they value. Over 20+ years, pet-related damage among properly screened tenants has been minimal and consistently within normal security deposit territory.</div>
+          <p><strong>What "will be considered" means in practice:</strong></p>
+          <ul>
+            <li>Every applicant with a pet goes through our professional pet screening service</li>
+            <li>Aggressive breed restrictions apply — these are not permitted regardless of screening</li>
+            <li>Approved pets are documented; unauthorized additions are a lease violation</li>
+            <li>ESAs and service animals are screened through a verifiable application process for legal compliance</li>
+          </ul>
+          <div class="highlight green-hl">Refusing pets also increases ESA requests — which you are legally <em>required</em> to accommodate regardless of your pet policy. Our approach handles ESA compliance properly while giving you a dramatically larger qualified applicant pool.</div>
+          <p>Additionally, your property is enrolled in the <strong>Animal Protection Guarantee</strong> — up to $1,500 in pet-related damage coverage beyond what the security deposit covers.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GROUP 7: SELLING -->
+  <div class="section-group">
+    <div class="section-group-title">Selling the Property — Section 9</div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" onclick="toggle(this)">
+        <span class="faq-clause">§9(a)</span>
+        <span class="faq-question">What if I want to sell the property while a tenant is living there?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-answer">
+          <p>Under Florida law, your tenant has the right to quiet enjoyment of the property through the end of their lease. This means you cannot list the property for sale and conduct showings at any time during the lease.</p>
+          <div class="highlight gold-hl"><strong>What the agreement allows:</strong> You may list the property for sale during the <strong>last 60 days</strong> of the tenant's lease. Any showings or sale-related activities must be coordinated through us in compliance with lease terms and tenant rights.</div>
+          <p>The practical path most owners take: wait for the lease to end naturally, then list. This also gives you a cleaner property to show and avoids tenant friction during the sales process.</p>
+          <p>If you want to move back in yourself, the same principle applies — you may not unilaterally terminate an active lease. We can walk you through the proper process for non-renewal when the time comes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GROUP 8: INSURANCE -->
+  <div class="section-group">
+    <div class="section-group-title">Insurance, Landlord Shield & Your Coverage — Sections 7(a) & 24</div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" onclick="toggle(this)">
+        <span class="faq-clause">§7(a)</span>
+        <span class="faq-question">What insurance am I required to carry as an owner?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-answer">
+          <p>You are required to maintain public liability and property damage insurance with at minimum:</p>
+          <ul>
+            <li>$100,000 coverage per person</li>
+            <li>$300,000 per occurrence</li>
+          </ul>
+          <p>Verandah Properties must be named as an <strong>Additional Insured</strong> on your policy. You'll need to provide a copy of your insurance declaration page confirming this.</p>
+          <div class="highlight green-hl"><strong>Good news:</strong> During the first year of management, enrollment in the <strong>Landlord Shield Coverage (SureVestor Protection Plus Bundle)</strong> fulfills the additional insured requirement — so you don't need to modify your existing policy immediately. This is one of the concrete ways the first-year free coverage saves you time and money right out of the gate.</div>
+          <div class="highlight gold-hl"><strong>If you fail to provide proof of insurance:</strong> You will be automatically enrolled in our general liability policy at your expense. This is a backstop, not a preference — carry your own coverage.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" onclick="toggle(this)">
+        <span class="faq-clause">§24</span>
+        <span class="faq-question">What is the Landlord Shield / SureVestor coverage — and what happens after year one?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-answer">
+          <p>The <strong>SureVestor Protection Plus Bundle</strong> (what we market as Landlord Shield Coverage) is enrolled automatically for every new property — free of charge for the first year. It provides:</p>
+          <ul>
+            <li>Up to $35,000 in tenant damage protection</li>
+            <li>25 weeks of lost rent coverage</li>
+            <li>Eviction cost coverage</li>
+            <li>$1,000,000 General Liability policy (supplementing your existing insurance)</li>
+            <li>Fulfills the additional insured requirement during year one</li>
+          </ul>
+          <div class="highlight"><strong>After year one:</strong> You may continue coverage at $55/month or $600/year (if paid upfront). This is entirely optional — but given what it covers, most owners find it worth every penny.</div>
+          <div class="highlight gold-hl"><strong>Important cancellation note:</strong> If you cancel the management agreement within the first 18 months, you agree to reimburse Verandah for the first-year SureVestor premium we covered. This is disclosed upfront so there are no surprises.</div>
+          <p>You cannot purchase this coverage independently — it is exclusive to Verandah-managed properties. <a href="https://www.verandahproperties.com/landlord-challenges" target="_blank" style="color:var(--teal);">Learn more →</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GROUP 9: HOA & MISC -->
+  <div class="section-group">
+    <div class="section-group-title">HOA, Utilities & Miscellaneous — Sections 5(j), 7(b), 8(c), 16</div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" onclick="toggle(this)">
+        <span class="faq-clause">§5(j)</span>
+        <span class="faq-question">My property has an HOA. How does that work?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-answer">
+          <p>All HOA fees, assessments, and fines remain your responsibility as the owner — not ours to pay from management operations. This includes recreation fees, special assessments, any fines levied by the HOA, and any delinquent fees that could impact your tenant's rights.</p>
+          <div class="highlight gold-hl"><strong>Critical:</strong> If HOA fees become delinquent and begin to affect your tenant's access to amenities or the property, we have the right to use rental proceeds to bring payments current. If rental proceeds are insufficient, you remain solely responsible.</div>
+          <p>You must provide us with the most current HOA rules and regulations. Tenants will be required to comply with all HOA rules as part of their lease terms — any violations are addressed as lease violations.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" onclick="toggle(this)">
+        <span class="faq-clause">§7(b)</span>
+        <span class="faq-question">Who handles utilities — and what are my responsibilities while the property is vacant?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-answer">
+          <p>Tenants are required to place all utilities in their own name at move-in. We cannot activate or manage utilities on your behalf — providers require accounts in the property owner's name.</p>
+          <div class="highlight"><strong>While the property is vacant:</strong> You must keep electricity and water active in your name. This is non-negotiable — we need utilities active to conduct showings, prepare the property, and handle any maintenance that arises before a tenant moves in.</div>
+          <div class="highlight gold-hl"><strong>Never terminate utilities on an occupied property.</strong> This is a serious Florida landlord-tenant law violation that can expose you to significant legal liability, fines, and potential claims from the tenant. If this ever happens — even accidentally — contact us immediately.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" onclick="toggle(this)">
+        <span class="faq-clause">§8(c)</span>
+        <span class="faq-question">Why do you need my Social Security Number or Tax ID?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-answer">
+          <p>Federal law requires us to issue a <strong>1099 form</strong> for any owner who receives $600 or more in rental income in a calendar year — which is virtually every owner. Your SSN or EIN is required for accurate tax reporting.</p>
+          <div class="highlight">Your 1099 will be delivered electronically through the Owner Portal each year. You'll receive an email notification when it's available and can download it in PDF format at any time.</div>
+          <p>Verandah does not provide tax filing services — your tax obligations related to rental income are your responsibility. We strongly recommend working with a tax professional who understands rental property income, depreciation, and deductions.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" onclick="toggle(this)">
+        <span class="faq-clause">§16</span>
+        <span class="faq-question">Does Verandah represent me exclusively, or also the tenant?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-body">
+        <div class="faq-answer">
+          <p>Under Florida law, Verandah Properties acts as a <strong>transaction broker</strong> — providing limited representation to both owner and tenant without fiduciary duties to either party. This is standard in Florida property management.</p>
+          <div class="highlight">What this means in plain language: we are not exclusively your advocate in the way an attorney would be. We are a professional intermediary whose job is to manage the property relationship fairly, lawfully, and in accordance with the lease terms. We serve your interests as the owner while fulfilling our legal obligations to tenants.</div>
+          <p>This is why the "no direct tenant contact" rule matters — it preserves our ability to function as an effective neutral professional on your behalf.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <strong>Verandah Properties, LLC</strong> · 4767 New Broad St., Orlando, FL 32812<br>
+  Office: 407-855-0331 · <a href="https://www.verandahproperties.com">verandahproperties.com</a><br><br>
+  This document is a plain-language companion guide to the Verandah Properties Exclusive Rental Management Agreement. It is not a substitute for the agreement itself and does not constitute legal advice. Questions? Call or text Pamela directly at (321) 621-2784.
+</div>
+
+<script>
+function toggle(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  // close all
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  // open this one if it wasn't open
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+</body>
+</html>
